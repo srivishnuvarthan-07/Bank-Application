@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 // import com.Bank.Gui.BankGui;
+import com.Bank.Gui.Home;
 import com.Bank.Gui.Login;
 import com.Bank.Util.DataBase;
 public class Main extends JFrame {
@@ -11,7 +12,7 @@ public class Main extends JFrame {
         DataBase db=new DataBase();
         try(Connection conn=db.getConnection()){
             System.out.println("Database connected");
-            Login login=new Login();
+            new Login();
         }
         catch (Exception e){
             System.out.println("Database not connected");
