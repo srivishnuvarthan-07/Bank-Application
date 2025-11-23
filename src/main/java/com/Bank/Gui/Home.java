@@ -5,6 +5,7 @@ import com.Bank.Gui.Deposit;
 import com.Bank.Gui.Withdraw;
 import com.Bank.Gui.Balance;
 import com.Bank.Gui.Login;
+import com.Bank.Gui.PinChange;
 
 public class Home {
     JFrame frame;
@@ -59,6 +60,10 @@ public class Home {
         balance.addActionListener(e -> {
             frame.dispose();
             Balance balancePage=new Balance(userAccount,userPin);
+        });
+        pin_change.addActionListener(e -> {
+            frame.dispose();
+            PinChange pinChangePage=new PinChange(userAccount,userPin);
         });
     }     
 }
