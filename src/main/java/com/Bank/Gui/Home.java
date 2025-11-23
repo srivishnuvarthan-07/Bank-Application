@@ -1,13 +1,21 @@
 package com.Bank.Gui;
 import javax.swing.*;
 import java.awt.*;
+import com.Bank.Gui.Deposit;
+import com.Bank.Gui.Withdraw;
+import com.Bank.Gui.Balance;
+import com.Bank.Gui.Login;
 
 public class Home {
     JFrame frame;
-    JButton deposit,withdraw,balance,transfer,logout;
+    JButton deposit,withdraw,balance,pin_change,logout;
     JLabel welcomeLabel;
-    public Home(){
+    String userAccount,userPin;
+    public Home(String userAccount,String userPin){
+        this.userAccount=userAccount;
+        this.userPin=userPin;
         setup();
+        addListeners();
     }
     void setup(){
         frame=new JFrame("Home Page");
@@ -27,12 +35,30 @@ public class Home {
         balance=new JButton("Balance");
         balance.setBounds(50,160,150,30);
         frame.add(balance);
-        transfer=new JButton("Transfer");
-        transfer.setBounds(250,160,150,30);
-        frame.add(transfer);
+        pin_change=new JButton("pint Change");
+        pin_change.setBounds(250,160,150,30);
+        frame.add(pin_change);
         logout=new JButton("Logout");
         logout.setBounds(170,220,150,30);
         frame.add(logout);
         frame.setVisible(true);
-    }    
+    }  
+    void addListeners(){
+        logout.addActionListener(e -> {
+            frame.dispose();
+            Login login=new Login();
+        });
+        deposit.addActionListener(e -> {
+            frame.dispose();
+            Deposit depositPage=new Deposit(userAccount,userPin);
+        });
+        withdraw.addActionListener(e -> {
+            frame.dispose();
+            Withdraw withdrawPage=new Withdraw(userAccount,userPin);
+        });
+        balance.addActionListener(e -> {
+            frame.dispose();
+            Balance balancePage=new Balance(userAccount,userPin);
+        });
+    }     
 }
