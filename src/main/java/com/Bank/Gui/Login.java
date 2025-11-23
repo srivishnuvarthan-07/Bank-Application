@@ -18,14 +18,16 @@ public class Login {
             frame.setLocationRelativeTo(null);
             account_name=new JLabel("Account No");
             account_name.setBounds(50,30,100,30);
+            frame.add(account_name);
             pinlabel=new JLabel("Pin");
-            passwordlabel.setBounds(50,70,100,30);
-            frame.add(passwordlabel);
+            pinlabel.setBounds(50,70,100,30);
+            frame.add(pinlabel);
             account_no=new JTextField();
             account_no.setBounds(150,30,150,30);
+            frame.add(account_no);
             pin=new JTextField();
-            password.setBounds(150,70,150,30);
-            frame.add(password);
+            pin.setBounds(150,70,150,30);
+            frame.add(pin);
             sumbit=new JButton("Submit");
             sumbit.setBounds(70,150,100,30);
             frame.add(sumbit);
@@ -35,7 +37,10 @@ public class Login {
             frame.setVisible(true);
         }
         void addListeners(){
-            clear.addActionListener(e -> password.setText(""));
+            clear.addActionListener(e ->{
+                account_no.setText("");
+                pin.setText("");
+            });
             sumbit.addActionListener(e -> {
                 frame.dispose();
                 Home homePage=new Home();
