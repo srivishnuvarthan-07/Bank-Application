@@ -10,15 +10,17 @@ public class Deposit{
     
     JTextField amountField;
     JButton depositBtn, backBtn;
-    String pin;
+    String account_no,pin_no;
     JFrame frame;
     Bankdao bankdao;
 
-    Deposit(String pin){
-        this.pin = pin;
+    Deposit(String account_no,String pin_no){
+        this.account_no=account_no;
+        this.pin_no=pin_no;
         initialsteps();
         addListeners();
     }
+
     void initialsteps(){
         bankdao = new Bankdao();
         frame = new JFrame("Deposit Page");
@@ -51,15 +53,20 @@ public class Deposit{
             String amountText=amountField.getText();
             Date date = new Date();
             try{
-                int row=bankdao.deposit(pin,amountText,date);
+                int row=bankdao.deposit(account_no,amountText,date);
                 if(row>0){
                     JOptionPane.showMessageDialog(frame, "Amount Deposited Successfully");
                     frame.dispose();
-                    Home homePage=new Home();
+                    Home homePage=new Home(account_no,pin_no);
                 }
             }catch(Exception ex){
                 JOptionPane.showMessageDialog(frame, "Error in depositing amount","Error",JOptionPane.ERROR_MESSAGE);
             }
         });
+        backBtn.addActionListener(e->{
+            frame.dispose();
+            Home homePage=new Home(account_no,pin_no);
+        });
+
     }
 }
