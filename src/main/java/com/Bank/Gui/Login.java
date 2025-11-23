@@ -1,6 +1,7 @@
 package com.Bank.Gui;
 import javax.swing.*;
 import java.awt.*;
+import com.Bank.Gui.Home;
 public class Login {
         JFrame frame;
         JButton sumbit,clear;
@@ -43,7 +44,9 @@ public class Login {
             });
             sumbit.addActionListener(e -> {
                 frame.dispose();
-                Home homePage=new Home();
+                String userPin=pin.getText();
+                String userAccount=account_no.getText();
+                Home homePage=new Home(userAccount,userPin);
             });
         }
 }
