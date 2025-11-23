@@ -4,8 +4,8 @@ import java.awt.*;
 public class Login {
         JFrame frame;
         JButton sumbit,clear;
-        JTextField password;
-        JLabel passwordlabel;
+        JTextField account_no,pin;
+        JLabel account_name,pinlabel;
         public Login(){
             setup();
             addListeners();
@@ -16,10 +16,14 @@ public class Login {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLayout(null);
             frame.setLocationRelativeTo(null);
-            passwordlabel=new JLabel("Password:");
+            account_name=new JLabel("Account No");
+            account_name.setBounds(50,30,100,30);
+            pinlabel=new JLabel("Pin");
             passwordlabel.setBounds(50,70,100,30);
             frame.add(passwordlabel);
-            password=new JTextField();
+            account_no=new JTextField();
+            account_no.setBounds(150,30,150,30);
+            pin=new JTextField();
             password.setBounds(150,70,150,30);
             frame.add(password);
             sumbit=new JButton("Submit");
@@ -33,14 +37,8 @@ public class Login {
         void addListeners(){
             clear.addActionListener(e -> password.setText(""));
             sumbit.addActionListener(e -> {
-                String pass=password.getText();
-                if(pass.equals("admin")){
-                    frame.dispose();
-                    Home home=new Home();
-                }
-                else{
-                    JOptionPane.showMessageDialog(frame,"Incorrect Password","Error",JOptionPane.ERROR_MESSAGE);
-                }
+                frame.dispose();
+                Home homePage=new Home();
             });
         }
 }
