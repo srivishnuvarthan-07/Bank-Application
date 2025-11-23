@@ -19,7 +19,18 @@ public class Bankdao {
         }
     }
     public int withdraw(String account_no,String amount,Date date) throws SQLException{
-        
+        int balance;
+        try{
+            balance=getBalance(account_no);
+            System.out.println("Current Balance: "+balance);
+            System.out.println("Requested Withdraw Amount: "+amount);
+            if(balance<(Integer.parseInt(amount))){
+                throw new SQLException("Insufficient Balance");
+            }
+        }
+        catch(Exception e){
+            throw new SQLException("Error retrieving balance");
+        }
         try (Connection conn = DataBase.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, account_no);
