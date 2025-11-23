@@ -1,6 +1,45 @@
 package com.Bank.Dao;
+import java.sql.Connection;  
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import com.Bank.Util.DataBase;
+import java.util.Date;
+
 public class Bankdao {
-    public static void main(String[] args) {
-        System.out.println("Bank dao");
+    String query="INSERT INTO bank_his(account_no, date, type, amount) VALUES (?,?,?,?)";
+    public int deposit(String account_no,String amount,Date date) throws SQLException{
+        try (Connection conn = DataBase.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, account_no);
+            pstmt.setDate(2, new java.sql.Date(date.getTime()));
+            pstmt.setString(3,"deposit");
+            pstmt.setString(4, amount);
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected;
+        }
+    }
+    public int withdraw(String account_no,String amount,Date date) throws SQLException{
+        
+        try (Connection conn = DataBase.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, account_no);
+            pstmt.setDate(2, new java.sql.Date(date.getTime()));
+            pstmt.setString(3,"withdraw");
+            pstmt.setString(4, amount);
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected;
+        }
+    }
+    public int getBalance(String account_no) throws SQLException{
+        String balanceQuery="SELECT SUM(CASE WHEN type='deposit' THEN amount ELSE -amount END) AS balance FROM bank_his WHERE account_no=?";
+        try (Connection conn = DataBase.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(balanceQuery)) {
+            pstmt.setString(1, account_no);
+            var rs = pstmt.executeQuery();
+            if(rs.next()){
+                return rs.getInt("balance");
+            }
+            return 0;
+        }
     }
 }
