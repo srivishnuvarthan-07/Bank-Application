@@ -53,4 +53,19 @@ public class Bankdao {
             return 0;
         }
     }
+    public int changePin(String account_no,String newpin) throws SQLException{
+        String pinQuery="UPDATE bank_acc SET pin=? WHERE account_no=?";
+        if(newpin.length()!=4){
+            throw new SQLException("PIN must be 4 digits");
+        }
+        try (Connection conn = DataBase.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(pinQuery)) {
+            pstmt.setString(1, newpin);
+            pstmt.setString(2, account_no);
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected;
+        }catch(Exception e){
+            throw new SQLException("Error changing PIN");
+        }
+    }
 }
