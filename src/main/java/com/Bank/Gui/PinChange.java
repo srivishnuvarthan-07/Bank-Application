@@ -8,7 +8,7 @@ public class PinChange {
     String userAccount,userPin;
     JTextField newPinField;
     JLabel newPinLabel;
-    JButton changePinButton;
+    JButton changePinButton,back;
     Bankdao bankdao;
     JFrame frame;
 
@@ -20,23 +20,49 @@ public class PinChange {
         addListeners();
     }
     void setup() {
-        frame.setSize(400, 300);
+        frame.setSize(550, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
 
+        Color bgColor = new Color(44, 62, 80);     // Midnight Blue
+        Color txtColor = Color.WHITE;
+        
+        frame.getContentPane().setBackground(bgColor);
+
+
+        JLabel title = new JLabel("CHANGE YOUR PIN");
+        title.setFont(new Font("System", Font.BOLD, 22));
+        title.setForeground(txtColor);
+        title.setBounds(160, 40, 300, 30);
+        frame.add(title);
+
         newPinLabel = new JLabel("Enter New PIN:");
-        newPinLabel.setBounds(50, 50, 200, 30);
+        newPinLabel.setFont(new Font("System", Font.BOLD, 16)); // Bigger Font
+        newPinLabel.setForeground(txtColor);                    // White Text
+        newPinLabel.setBounds(80, 120, 150, 30);
         frame.add(newPinLabel);
 
-        newPinField = new JTextField();
-        newPinField.setBounds(200, 50, 100, 30);
+        newPinField = new JPasswordField(); 
+        newPinField.setFont(new Font("Raleway", Font.BOLD, 22)); 
+        newPinField.setBounds(240, 120, 200, 30);
         frame.add(newPinField);
 
-        changePinButton = new JButton("Change PIN");
-        changePinButton.setBounds(150, 100, 100, 30);
+        changePinButton = new JButton("CHANGE"); 
+        changePinButton.setBounds(240, 180, 200, 35);
+        changePinButton.setBackground(Color.WHITE);
+        changePinButton.setForeground(Color.BLACK);
+        changePinButton.setFont(new Font("System", Font.BOLD, 14));
+        changePinButton.setFocusable(false);
         frame.add(changePinButton);
 
+        back = new JButton("BACK");
+        back.setBounds(240, 230, 200, 35);
+        back.setBackground(Color.RED);
+        back.setForeground(Color.WHITE);
+        back.setFont(new Font("System", Font.BOLD, 14));
+        back.setFocusable(false);
+        frame.add(back);
         frame.setVisible(true);
     }
     void addListeners() {
@@ -54,6 +80,10 @@ public class PinChange {
             } catch(Exception ex){
                 JOptionPane.showMessageDialog(null,ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
             }
+        });
+        back.addActionListener(e -> {
+            frame.dispose();
+            Home homePage = new Home(userAccount, userPin);
         });
     }
 }
