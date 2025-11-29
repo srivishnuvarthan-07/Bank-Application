@@ -68,4 +68,22 @@ public class Bankdao {
             throw new SQLException("Error changing PIN");
         }
     }
+    public void getmini(StringBuilder text,String account_no){
+        String miniQuery="SELECT date, type, amount FROM bank_his WHERE account_no=? ORDER BY date DESC LIMIT 10";
+        try (Connection conn = DataBase.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(miniQuery)) {
+            pstmt.setString(1, account_no);
+            var rs = pstmt.executeQuery();
+            while(rs.next()){
+                String date=rs.getDate("date").toString();
+                String type=rs.getString("type");
+                String amount=rs.getString("amount");
+                text.append(date).append(" - ").append(type).append(" - $").append(amount).append("<br>");
+            }
+            text.append("</html>");
+        }catch(Exception e){
+            text.append("Error retrieving mini statement</html>");
+        }
+    }
+    
 }
