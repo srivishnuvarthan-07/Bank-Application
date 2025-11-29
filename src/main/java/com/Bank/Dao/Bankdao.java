@@ -2,7 +2,8 @@ package com.Bank.Dao;
 import java.sql.Connection;  
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import com.Bank.Util.DataBase;
+import com.Bank.Util.DataBase;  
+import javax.swing.*;
 import java.util.Date;
 
 public class Bankdao {
@@ -84,6 +85,20 @@ public class Bankdao {
         }catch(Exception e){
             text.append("Error retrieving mini statement</html>");
         }
+    }
+    public boolean validateLogin(String account_no,String pin) throws SQLException{
+        String loginQuery="SELECT * FROM bank_acc WHERE account_no=? AND pin=?";
+        try (Connection conn = DataBase.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(loginQuery)) {
+            pstmt.setString(1, account_no);
+            pstmt.setString(2, pin);
+            var rs = pstmt.executeQuery();
+            return rs.next();
+        }
+    }
+    public void clearFields(JTextField account_no,JTextField pin){
+        account_no.setText("");
+        pin.setText("");
     }
     
 }
