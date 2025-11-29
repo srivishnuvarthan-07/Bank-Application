@@ -18,22 +18,48 @@ public class Withdraw {
         addListeners(userPin);
     }
     void setup(){
-        frame=new JFrame("Withdraw Page");
-        frame.setSize(400,300);
+        frame = new JFrame("Withdraw Page");
+        frame.setSize(550, 400); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
-        amountLabel=new JLabel("Enter Amount to Withdraw:");
-        amountLabel.setBounds(50,50,200,30);
+
+        Color bgColor = new Color(44, 62, 80);      // Midnight Blue
+        Color txtColor = Color.WHITE;
+
+        frame.getContentPane().setBackground(bgColor);
+
+        JLabel title = new JLabel("MAXIMUM WITHDRAWAL IS RS 10,000");
+        title.setForeground(txtColor);
+        title.setFont(new Font("System", Font.BOLD, 18));
+        title.setBounds(110, 40, 400, 25);
+        frame.add(title);
+
+        amountLabel = new JLabel("Enter Amount:");
+        amountLabel.setForeground(txtColor);
+        amountLabel.setFont(new Font("System", Font.BOLD, 16));
+        amountLabel.setBounds(100, 120, 150, 30);
         frame.add(amountLabel);
-        amountField=new JTextField();
-        amountField.setBounds(200,50,100,30);
+
+        amountField = new JTextField();
+        amountField.setFont(new Font("Raleway", Font.BOLD, 22)); 
+        amountField.setBounds(230, 120, 200, 30);
         frame.add(amountField);
-        withdrawButton=new JButton("Withdraw");
-        withdrawButton.setBounds(50,100,100,30);
+
+        withdrawButton = new JButton("WITHDRAW");
+        withdrawButton.setBounds(230, 200, 200, 35);
+        withdrawButton.setBackground(Color.WHITE);
+        withdrawButton.setForeground(Color.BLACK);
+        withdrawButton.setFont(new Font("System", Font.BOLD, 14));
+        withdrawButton.setFocusable(false);
         frame.add(withdrawButton);
-        backButton=new JButton("Back");
-        backButton.setBounds(200,100,100,30);
+
+        backButton = new JButton("BACK");
+        backButton.setBounds(230, 250, 200, 35);
+        backButton.setBackground(Color.RED); 
+        backButton.setForeground(Color.WHITE);
+        backButton.setFont(new Font("System", Font.BOLD, 14));
+        backButton.setFocusable(false);
         frame.add(backButton);
         frame.setVisible(true);
     }  
