@@ -24,25 +24,47 @@ public class Deposit{
     void initialsteps(){
         bankdao = new Bankdao();
         frame = new JFrame("Deposit Page");
-        frame.setSize(400,300);
+        frame.setSize(550, 400); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
 
-        JLabel amountLabel = new JLabel("Enter Amount to Deposit:");
-        amountLabel.setBounds(50,50,200,30);
+        Color bgColor = new Color(44, 62, 80);      // Midnight Blue
+        Color txtColor = Color.WHITE;
+
+        frame.getContentPane().setBackground(bgColor);
+
+        JLabel title = new JLabel("DEPOSIT MONEY");
+        title.setForeground(txtColor);
+        title.setFont(new Font("System", Font.BOLD, 22));
+        title.setBounds(170, 40, 300, 30);
+        frame.add(title);
+
+        JLabel amountLabel = new JLabel("Enter Amount:");
+        amountLabel.setForeground(txtColor);
+        amountLabel.setFont(new Font("System", Font.BOLD, 16));
+        amountLabel.setBounds(90, 120, 150, 30);
         frame.add(amountLabel);
 
         amountField = new JTextField();
-        amountField.setBounds(200,50,100,30);
+        amountField.setFont(new Font("Raleway", Font.BOLD, 22)); // Large font for numbers
+        amountField.setBounds(230, 120, 200, 30);
         frame.add(amountField);
 
-        depositBtn = new JButton("Deposit");
-        depositBtn.setBounds(50,100,100,30);
+        depositBtn = new JButton("DEPOSIT");
+        depositBtn.setBounds(230, 200, 200, 35);
+        depositBtn.setBackground(Color.WHITE);
+        depositBtn.setForeground(Color.BLACK);
+        depositBtn.setFont(new Font("System", Font.BOLD, 14));
+        depositBtn.setFocusable(false);
         frame.add(depositBtn);
 
-        backBtn = new JButton("Back");
-        backBtn.setBounds(200,100,100,30);
+        backBtn = new JButton("BACK");
+        backBtn.setBounds(230, 250, 200, 35);
+        backBtn.setBackground(Color.RED);
+        backBtn.setForeground(Color.WHITE);
+        backBtn.setFont(new Font("System", Font.BOLD, 14));
+        backBtn.setFocusable(false);
         frame.add(backBtn);
 
         frame.setVisible(true);
