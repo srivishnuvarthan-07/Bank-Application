@@ -1,4 +1,11 @@
-com\Bank\Gui\Login.class
-com\Bank\Util\DataBase.class
+com\Bank\Gui\Fastcash.class
 com\Bank\Main.class
 com\Bank\Dao\Bankdao.class
+com\Bank\Gui\Deposit.class
+com\Bank\Gui\Home.class
+com\Bank\Gui\PinChange.class
+com\Bank\Gui\Withdraw.class
+com\Bank\Gui\Login.class
+com\Bank\Util\DataBase.class
+com\Bank\Gui\Ministatement.class
+com\Bank\Gui\Balance.class
