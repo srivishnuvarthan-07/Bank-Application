@@ -18,27 +18,22 @@ public class Fastcash {
     } 
     void setup() {
         frame = new JFrame("Fast Cash");
-        frame.setSize(700, 500); // Slightly wider for better spacing
+        frame.setSize(700, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         
-        // --- 1. THEME COLORS ---
         Color bgColor = new Color(44, 62, 80);     // Midnight Blue
         Color txtColor = Color.WHITE;
         
         frame.getContentPane().setBackground(bgColor);
 
-        // --- 2. HEADER LABEL ---
         JLabel title = new JLabel("SELECT WITHDRAWAL AMOUNT");
         title.setBounds(210, 30, 400, 30);
         title.setForeground(txtColor);
         title.setFont(new Font("System", Font.BOLD, 18));
         frame.add(title);
 
-        // --- 3. BUTTONS (With Helper Function for Style) ---
-        
-        // Row 1
         b1 = new JButton("$100");
         b1.setBounds(60, 100, 200, 45); // Bigger buttons
         styleButton(b1);
@@ -49,7 +44,7 @@ public class Fastcash {
         styleButton(b2);
         frame.add(b2);
 
-        // Row 2
+      
         b3 = new JButton("$1000");
         b3.setBounds(60, 170, 200, 45);
         styleButton(b3);
@@ -60,7 +55,6 @@ public class Fastcash {
         styleButton(b4);
         frame.add(b4);
 
-        // Row 3
         b5 = new JButton("$5000");
         b5.setBounds(60, 240, 200, 45);
         styleButton(b5);
@@ -71,10 +65,9 @@ public class Fastcash {
         styleButton(b6);
         frame.add(b6);
 
-        // Back Button
         back = new JButton("BACK");
         back.setBounds(250, 350, 180, 40);
-        back.setBackground(Color.RED); // Distinct color for navigation
+        back.setBackground(Color.RED); 
         back.setForeground(Color.WHITE);
         back.setFont(new Font("System", Font.BOLD, 14));
         frame.add(back);
@@ -86,7 +79,6 @@ public class Fastcash {
         btn.setForeground(Color.BLACK);
         btn.setFont(new Font("Tahoma", Font.BOLD, 16));
         btn.setFocusable(false);
-        // Add listener automatically
     }
     void addListeners() {
         back.addActionListener(e -> {
