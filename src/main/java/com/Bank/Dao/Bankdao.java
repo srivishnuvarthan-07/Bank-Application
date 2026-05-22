@@ -96,6 +96,16 @@ public class Bankdao {
             return rs.next();
         }
     }
+    public int createAccount(String account_no,String pin) throws SQLException{
+        String createQuery = "INSERT INTO bank_acc(account_no, pin) VALUES (?, ?)";
+        try (Connection conn = DataBase.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(createQuery)) {
+            pstmt.setString(1, account_no);
+            pstmt.setString(2, pin);
+            return pstmt.executeUpdate();
+        }
+    }
+
     public void clearFields(JTextField account_no,JTextField pin){
         account_no.setText("");
         pin.setText("");
