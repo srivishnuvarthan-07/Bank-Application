@@ -2,10 +2,11 @@ package com.Bank.Gui;
 import javax.swing.*;
 import java.awt.*;
 import com.Bank.Gui.Home;
+import com.Bank.Gui.CreateAccount;
 import com.Bank.Dao.Bankdao;
 public class Login {
     JFrame frame;
-    JButton sumbit,clear;
+    JButton sumbit,clear,createAccount;
     JTextField account_no,pin;
     JLabel account_name,pinlabel;
     Bankdao bankdao;
@@ -70,6 +71,14 @@ public class Login {
         clear.setFocusable(false);
         frame.add(clear);
 
+        createAccount = new JButton("CREATE ACCOUNT");
+        createAccount.setBackground(Color.WHITE);
+        createAccount.setForeground(Color.BLACK);
+        createAccount.setFont(new Font("Arial", Font.BOLD, 14));
+        createAccount.setBounds(200, 320, 250, 35);
+        createAccount.setFocusable(false);
+        frame.add(createAccount);
+
         frame.setVisible(true);
     }
     void addListeners(){
@@ -94,6 +103,11 @@ public class Login {
             }catch(Exception ex){
                 JOptionPane.showMessageDialog(frame, "Error in Login","Error",JOptionPane.ERROR_MESSAGE);
             }
+        });
+
+        createAccount.addActionListener(e -> {
+            frame.dispose();
+            new CreateAccount();
         });
     }
 }
