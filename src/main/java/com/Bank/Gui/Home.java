@@ -33,7 +33,7 @@ public class Home {
         Font mainFont = new Font("SansSerif", Font.BOLD, 14);
 
         frame.getContentPane().setBackground(bgColor);
-        welcomeLabel = new JLabel("Welcome to ABC Bank");
+        welcomeLabel = new JLabel("Welcome to ABC ATM");
         welcomeLabel.setForeground(Color.YELLOW);
         welcomeLabel.setFont(new Font("Osward", Font.BOLD, 26));
         welcomeLabel.setBounds(150, 40, 400, 40);
