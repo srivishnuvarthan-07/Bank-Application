@@ -1,4 +1,4 @@
-# ATM CRUD Java Maven Project
+# ATM Java Maven Project
 
 Simple ATM management application built with Java Swing and Maven.
 
